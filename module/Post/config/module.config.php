@@ -42,11 +42,27 @@ return array(
                     ),
                     'defaults'    => array(
                         'controller' => 'Post\Controller\Handler',
-                        'action'     => 'soap',
+                        'action'     => 'index',
                     ),
                 ),
-            ),
+                'may_terminate' => true,
+                // so that it will accept the ?wsdl if requested - else it redirects as a bad route
+                'child_routes' => array(
+                    'default' => array(
+                        'type'  => 'Segment',
+                        'options' => array(
+                            'route' => '/[:wsdl]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
 
+            ),
 
         ),
     ),

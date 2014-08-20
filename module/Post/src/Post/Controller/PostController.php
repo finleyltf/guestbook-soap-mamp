@@ -24,12 +24,6 @@ class PostController extends AbstractActionController
      */
     protected $em;
 
-    public $sm;
-    // set our service locator so we can access the DAOs elsewhere.
-    public function __construct($sm) {
-        $this->sm = $sm;
-    }
-
     public function setEntityManager(EntityManager $em)
     {
         $this->em = $em;
